@@ -115,14 +115,3 @@ public class Game {
         System.out.println(res);
     }
 }
-
-//a0-a4
-//g9-j9
-//c0-c3
-//c5-c7
-//e0-e2
-//e4-e6
-//e8-e9
-//g0-g1
-//g3-g4
-//g6-h6
