@@ -7,9 +7,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.example.Board.BoardProperties.*;
 
 class Board {
+
+    public static int SIZE = 10;
+    public static final String X_COORDINATES = "0  1  2  3  4  5  6  7  8  9";
+    public static final String Y_COORDINATES = "abcdefghij";
+    public static final Map<Character, Integer> yCoords2int = Y_COORDINATES.chars()
+            .mapToObj(c -> (char) c)
+            .collect(Collectors.toUnmodifiableMap(letter -> letter, letter -> letter - 97));
 
     private final Cell[][] board;
     @Getter
@@ -23,15 +29,6 @@ class Board {
                 board[r][c] = new Cell(null);
             }
         }
-    }
-
-    static class BoardProperties {
-        public static int SIZE = 10;
-        public static final String X_COORDINATES = "0  1  2  3  4  5  6  7  8  9";
-        public static final String Y_COORDINATES = "abcdefghij";
-        public static final Map<Character, Integer> yCoords2int = Y_COORDINATES.chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.toUnmodifiableMap(letter -> letter, letter -> letter - 97));
     }
 
     public boolean receiveHit(int r, int c) {

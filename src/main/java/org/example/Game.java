@@ -1,7 +1,7 @@
 package org.example;
 
 import java.util.Scanner;
-import static org.example.Board.BoardProperties.*;
+import static org.example.Board.*;
 
 public class Game {
     private final Player player1, player2;
