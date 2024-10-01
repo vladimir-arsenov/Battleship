@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 
 
 class Board {
-
     public static int SIZE = 10;
     public static final String X_COORDINATES = "0  1  2  3  4  5  6  7  8  9";
     public static final String Y_COORDINATES = "abcdefghij";
@@ -17,6 +16,10 @@ class Board {
             .mapToObj(c -> (char) c)
             .collect(Collectors.toUnmodifiableMap(letter -> letter, letter -> letter - 97));
 
+    private static final char HIT = 'X';
+    private static final char MISS = 'O';
+    private static final char SHIP = '#';
+    private static final char EMPTY = ' ';
     private final Cell[][] board;
     @Getter
     private int destroyedShips;
@@ -86,13 +89,13 @@ class Board {
             for (int c = 0; c < SIZE; c++) {
                 Cell cell = board[r][c];
                 if (cell.isHit() && cell.hasShip()) {
-                    sb.append('X');
+                    sb.append(HIT);
                 } else if (cell.isHit()) {
-                    sb.append("O");
+                    sb.append(MISS);
                 } else if (!hideShips && board[r][c].hasShip()) {
-                    sb.append('#');
+                    sb.append(SHIP);
                 } else {
-                    sb.append(' ');
+                    sb.append(EMPTY);
                 }
                 sb.append("  ");
             }
